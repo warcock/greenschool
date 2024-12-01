@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leaderboard | App</title>
+    <style>
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            display: flex;
+            min-height: 100vh;
+            background-color: #f4f4f4;
+        }
+
+        /* Sidebar styles */
+        .sidebar {
+            width: 200px;
+            background: #333;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            padding: 20px 0;
+        }
+
+        .sidebar a {
+            color: #fff;
+            text-decoration: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            transition: background 0.3s;
+        }
+
+        .sidebar a:hover {
+            background: #444;
+        }
+
+        .sidebar h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 20px;
+        }
+
+        /* Leaderboard container */
+        .container {
+            flex-grow: 1;
+            padding: 20px;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin: 20px;
+            text-align: center;
+        }
+
+        header {
+            font-size: 24px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        table th, table td {
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: center;
+        }
+
+        table th {
+            background-color: #4caf50;
+            color: #fff;
+        }
+
+        table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        footer {
+            font-size: 14px;
+            color: #999;
+        }
+    </style>
+</head>
+<body>
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <h2>Menu</h2>
+        <a href="/profile">Profile</a>
+        <a href="/qrscan">QR Scan</a>
+        <a href="/progress">Progress</a>
+    </div>
+
+    <!-- Leaderboard container -->
+    <div class="container">
+        <header>Leaderboard</header>
+        <table>
+            <thead>
+                <tr>
+                    <th>Rank</th>
+                    <th>Name</th>
+                    <th>Points</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for user in leaderboard %}
+                <tr>
+                    <td>{{ user['rank'] }}</td>
+                    <td>{{ user['username'] }}</td>
+                    <td>{{ user['points'] }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>            
+        </table>
+        <footer>
+            &copy; 2024 QR Points System
+        </footer>
+    </div>
+</body>
+</html>
